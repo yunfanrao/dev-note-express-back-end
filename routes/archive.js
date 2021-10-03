@@ -40,10 +40,10 @@ router.get("/:id", async (req, res) => {
     console.log("Trying to get the archive field of the note which id is " + id);
     await NoteModel.findById(id, (err, foundNote) => {
       if(err) {
-        console.log("Not able to delete the note: " + err);
+        console.log("Not able to get the archive field of the note: " + err);
       }
       else {
-        console.log("Archived the note!");
+        console.log("Found the note!");
         let archived = false
         if(foundNote.archive) {
           archived = true
@@ -69,7 +69,7 @@ router.put("/toggle/:id", async (req, res) => {
     console.log("Trying to toggle the archieve field of the note which id is " + id);
     await NoteModel.findById(id, (err, foundNote) => {
       if(err) {
-        console.log("Not able to delete the note: " + err);
+        console.log("Not able to toggle the archieve field: " + err);
       }
       else {
         foundNote.archive = !foundNote.archive;
@@ -102,7 +102,7 @@ router.put("/archive/:id", async (req, res) => {
     const update = { archive: true };
     await NoteModel.findByIdAndUpdate(id, update, (err) => {
       if(err) {
-        console.log("Not able to delete the note: " + err);
+        console.log("Not able to archive the note: " + err);
       }
       else {
         console.log("Archived the note!");
@@ -123,14 +123,14 @@ router.put("/archive/:id", async (req, res) => {
 router.put("/unarchive/:id", async (req, res) => {
   try {
     const id = req.params.id
-    console.log("Trying to archive note which id is " + id);
+    console.log("Trying to unarchive note which id is " + id);
     const update = { archive: false };
     await NoteModel.findByIdAndUpdate(id, update, (err) => {
       if(err) {
-        console.log("Not able to delete the note: " + err);
+        console.log("Not able to unarchive the note: " + err);
       }
       else {
-        console.log("Archived the note!");
+        console.log("Unarchived the note!");
         res.status(200).json({
           status: "Success!"
         });

@@ -149,7 +149,7 @@ router.delete("/delete/:id/:labelToDelete", async (req, res) => {
         foundNote.labels = foundNote.labels.filter( label => label != labelToDelete);
         foundNote.save( (saveErr) => {
           if(!saveErr) {
-            console.log("Updated the labels field!");
+            console.log("Deleted the label!");
             res.status(200).json({
               status: "Success!"
             });
