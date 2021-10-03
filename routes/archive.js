@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const NoteModel = require("../models/note");
-//console.log(NoteModel);
+console.log(NoteModel);
 
 router.get("/list", async (req, res) => {
   try {
