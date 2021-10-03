@@ -6,6 +6,7 @@ const logger =  require("morgan");
 const notesRouter = require("./routes/notes");
 const archiveRouter = require("./routes/archive");
 const labelsRouter = require("./routes/labels");
+const searchRouter = require("./routes/search");
 
 const port = process.env.PORT || 3001;
 
@@ -27,6 +28,7 @@ app.use(logger('dev'));
 app.use("/notes", notesRouter);
 app.use("/labels", labelsRouter);
 app.use("/archive", archiveRouter);
+app.use("/search", searchRouter);
 
 app.listen(port, () => {
     console.log("Dev-Note back end is running on " + port);
