@@ -20,10 +20,10 @@ router.get("/list", async (req, res) => {
       else {
         notes = foundNotes;
         //console.log(foundNotes);
+        res.status(200).json({
+          data: notes
+        });
       }
-      res.status(200).json({
-        data: notes
-      });
     });
   }
   catch (error) {
@@ -43,7 +43,7 @@ router.post("/add", async (req, res) => {
     });
     console.log("newNote is " + newNote);
     await newNote.save((err, savedNewNote) => {
-      if(err) {
+      if (err) {
         console.log("Not able to save the new note: " + err);
       }
       else {
@@ -67,7 +67,7 @@ router.delete("/delete/:id", async (req, res) => {
     const id = req.params.id
     console.log("Trying to delete note which id is " + id);
     await NoteModel.findByIdAndDelete(id, (err) => {
-      if(err) {
+      if (err) {
         console.log("Not able to delete the note: " + err);
       }
       else {

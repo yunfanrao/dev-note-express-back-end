@@ -7,6 +7,9 @@ const noteSchema = new mongoose.Schema({
   labels: [{type: String}]
 });
 
+// add text index, note that "text" must be double quoted
+noteSchema.index({title: "text"});
+
 const NoteModel = mongoose.model("Note", noteSchema);
 
 module.exports = NoteModel;
